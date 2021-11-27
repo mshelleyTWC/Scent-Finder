@@ -1,0 +1,1267 @@
+<style>@import url('https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,300i,400,400i,600,700,700i&display=swap');
+  .main {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 32px 16px;
+    width: 100%;
+    max-width: 1312px;
+  }
+  
+  .grid {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .scent-finder-banner {
+    width: 1104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .scent-banner-image {
+    width: 100%;
+    height: auto;
+    transition: width .3s linear;
+  }
+  
+  .scent-banner-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .scent-banner-heading {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 36px;
+    letter-spacing: 1px;
+    text-transform: none;
+  }
+  
+  .scent-banner-text {
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding-top: 8px;
+  }
+  
+  .slider-wrapper {
+    position: relative;
+    width: 95vw;
+    max-width: 1104px;
+    height: 100%;
+    margin: auto;
+  }
+  
+  .slider-container {
+    width: 100%;
+    height: auto;
+    border: 1px solid #999999;
+    position: relative;
+    padding: 8px;
+  }
+  
+  .slide {
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    opacity: 1;
+    -webkit-transition: all .8s ease 0.2s;
+    -o-transition: all .8s ease 0.2s;
+    transition: all .8s ease 0.2s;
+  }
+  
+  .hide {
+    opacity: 0;
+    -webkit-transition: all .8s ease 0.2s;
+    -o-transition: all .8s ease 0.2s;
+    transition: all .8s ease 0.2s;
+    display: none;
+  }
+  
+  .question {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 0;
+    padding: 0 24px;
+    background: #fff;
+    z-index: 3;
+  }
+  
+  .info-box {
+    visibility: hidden;
+    width: 100%;
+    height: 40px;
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .info-icon {
+    width: 24px;
+    height: 22px;
+  }
+  
+  .error {
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 13px;
+    margin: auto 8px;
+    color: #CC1F26;
+  }
+  
+  .slide-content {
+    width: 100%;
+    height: 71%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  
+  .quiz-option {
+    position: relative;
+    text-align: center;
+    margin: 12px 12px;
+  }
+  
+  .align-content .quiz-option {
+    flex: 45%;
+    align-self: flex-end;
+    text-align: left;
+  }
+  
+  .align-content .quiz-option:nth-child(2n+1) {
+    text-align: right;
+  }
+  
+  .align-content .quiz-option:nth-child(2n+1) .question-label {
+    right: 6px;
+    left: auto;
+  }
+  
+  .question-label {
+    color: #000000;
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    width: 248px;
+    height: 32px;
+    padding: 5px 0;
+    text-align: center;
+    position: absolute;
+    left: 6px;
+    top: 131px;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .slider-image {
+    max-width: 260px;
+    max-height: 172px;
+    width: auto;
+    height: auto;
+    border: 3px solid #fff;
+    cursor: pointer;
+  }
+  
+  .selected {
+    border-color: #000000;
+  }
+  
+  .description {
+    width: 260px;
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    font-weight: normal;
+    font-style: italic;
+    line-height: 18px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #666666;
+    text-align: left;
+    hyphens: auto;
+    display: block;
+    border: 3px solid #fff;
+  }
+  
+  .prev {
+    position: absolute;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 70px;
+    background-color: #000000;
+    border-bottom-right-radius: 34px;
+    border-top-right-radius: 34px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 1px solid #000000;
+    z-index: 1;
+  }
+  
+  .prev span {
+    position: absolute;
+    top: 36%;
+    left: 45px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  
+  .move-left {
+    position: absolute;
+    top: 32%;
+    left: 3px;
+    color: #fff;
+    stroke: #fff;
+    fill: #fff;
+  }
+  
+  .next {
+    position: absolute;
+    margin: auto 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 35px;
+    height: 70px;
+    background-color: #000000;
+    border-top-left-radius: 34px;
+    border-bottom-left-radius: 34px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 1px solid #000000;
+    z-index: 1;
+  }
+  
+  .next span {
+    position: absolute;
+    top: 36%;
+    right: 45px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  
+  .next:hover,
+  .prev:hover {
+    cursor: pointer;
+  }
+  
+  .prev:disabled,
+  .next-disabled {
+    background-color: #666666;
+    border-color: #666666;
+    color: #666666;
+    cursor: auto;
+  }
+  
+  .move-right {
+    position: absolute;
+    top: 32%;
+    right: 3px;
+    color: #fff;
+    stroke: #fff;
+    fill: #fff;
+  }
+  
+  #progress-bar-container {
+    margin-top: 40px;
+    width: 1104px;
+    height: 8px;
+    background-color: #CCCCCC;
+    border-radius: 6px;
+    display: flex;
+  }
+  
+  #progress-bar {
+    background: #000000;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+    height: 100%;
+    width: 10%;
+    opacity: 1;
+    transition: 0.8s ease 0.2s;
+  }
+  
+  @media screen and (max-width: 320px){
+    .quiz-option{
+      margin: 12px auto!important;;
+    }
+    .question-label{
+      left: 5px;
+      top: 107px;
+      width: 210px;
+    }
+    .slider-image{
+      max-width: 220px;
+    }
+    .scent-banner-text{
+      font-size: 13px!important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .main {
+      padding: 0;
+    }
+    .main-section {
+      padding: 0 16px;
+    }
+    .grid {
+      display: block;
+      flex: none;
+    }
+    .slider-wrapper {
+      width: 100%;
+      height: auto;
+      left: 0;
+    }
+    .slide-content {
+      flex-direction: column;
+      transition: all 0.8s ease 0.2s;
+    }
+    .scent-banner-wrapper {
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+    .scent-finder-banner {
+      width: 100%;
+      text-align: center;
+    }
+    .scent-banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .scent-banner-heading {
+      font-size: 24px;
+      line-height: 16px;
+    }
+    .scent-banner-text {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .slide {
+      width: 100%;
+      height: auto;
+      padding: 0;
+    }
+    .align-content .quiz-option:nth-child(2n+1) {
+      text-align: center;
+    }
+    .align-content .quiz-option {
+      flex: 100%;
+      align-self: center;
+      text-align: center;
+    }
+    #progress-bar-container {
+      width: 91vw;
+      margin-bottom: 40px;
+    }
+    .question {
+      font-size: 18px;
+      width: 75%;
+      max-width: 100%;
+      padding: 0 4px;
+    }
+    .info-box {
+      width: 260px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .quiz-option {
+      margin: 12px 16px;
+      scroll-behavior: smooth;
+    }
+    #prev span,
+    #next span {
+      display: none;
+    }
+    .content-container {
+      min-height: 100%;
+    }
+    .main {
+      height: 100%;
+    }
+    .prev {
+      position: fixed;
+      top: 80%;
+      bottom: 20%;
+      left: 0px;
+      margin: auto;
+      transform: translate(0, -50%);
+    }
+    .next {
+      position: fixed;
+      top: 80%;
+      bottom: 20%;
+      right: -18px;
+      margin: auto;
+      transform: translate(-50%, -50%); 
+    }
+  }
+  
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .grid {
+      display: block;
+      flex: none;
+    }
+    .scent-finder-banner {
+      width: 100%;
+      min-width: 740px;
+    }
+    .scent-banner-image {
+      object-fit: scale-down;
+      object-position: center;
+      display: block;
+    }
+    .scent-banner-heading {
+      font-size: 24px;
+      line-height: 24px;
+    }
+    .scent-banner-text {
+      font-size: 12px;
+      line-height: 10px;
+    }
+    .slider-wrapper {
+      width: 740px;
+      max-height: 100%;
+    }
+    #progress-bar-container {
+      width: 740px;
+    }
+    .slide-content {
+      flex-flow: column wrap;
+    }
+    .slide {
+      height: auto;
+    }
+    .slider {
+      flex-direction: column;
+    }
+    .align-content .quiz-option:nth-child(2n+1) {
+      text-align: center;
+    }
+    .align-content .quiz-option {
+      flex: 100%;
+      align-self: center;
+      text-align: center;
+    }
+    .slide-content {
+      height: 71%;
+      max-height: 100%;
+    }
+    .slide {
+      max-height: 100vh;
+    }
+    .question {
+      font-size: 20px;
+      max-width: 90%;
+    }
+    #prev span,
+    #next span {
+      display: none;
+    }
+    .prev {
+      /* top: 40%; */
+      left: -16px;
+    }
+    .next {
+      /* top: 40%; */
+      right: -16px;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .scent-finder-banner {
+      width: 100%;
+    }
+    .scent-banner-image {
+      object-fit: scale-down;
+      object-position: center;
+      display: block;
+    }
+    .slider-wrapper {
+      width: 992px;
+    }
+    #progress-bar-container {
+      width: 992px;
+    }
+    #prev span,
+    #next span {
+      display: none;
+    }
+    .prev {
+      top: 40%;
+      left: -16px;
+    }
+    .next {
+      top: 40%;
+      right: -16px;
+    }
+  }
+  
+</style>
+<div class="main">
+  <section>
+    <div class="grid" style="--columns:12">
+      <div class="col">
+        <!-- Banner -->         
+        <div class="scent-finder-banner">
+          <picture>
+            <source srcset="https://media.thewhitecompany.com/i/white/scent-finder-MB" media="(max-width: 480px)"               class="scent-banner-image">
+            <source srcset="https://media.thewhitecompany.com/i/white/scent-finder-DT" media="(min-width: 481px)"               class="scent-banner-image">
+            <img src="https://media.thewhitecompany.com/i/white/scent-finder-DT"               alt="fragrance finder banner" class="scent-banner-image">           
+          </picture>
+          <div class="scent-banner-wrapper">
+            <h1 class="scent-banner-heading">The Scent Finder</h1>
+            <p class="scent-banner-text">Discover the perfect gift (or treat for you)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="main-section content-container">
+    <div class="grid" style="--columns:12">
+      <div class="col col--xs-6 col--sm-4 col--md-3">
+        <div id="slider" class="slider">
+          <div class="slider-wrapper">
+            <div class="last"><button class="prev" id="prev" disabled><span>Back</span><img src="https://media.thewhitecompany.com/i/white/arrow-left" alt="previous question" class="move-left"></button></div>
+            <div class="forward"><button class="next next-disabled" id="next"><span>Next</span> <img src=" https://media.thewhitecompany.com/i/white/arrow-right" alt="next question" class="move-right"></button></div>
+            <div class="slider-container slides" id="slides">
+              <div class="slide" id="slide-1">
+                <h3 class="question">Is this a gift, or for yourself?</h3>
+                <div class="info-box">
+                  <img src="https://media.thewhitecompany.com/i/white/warning" alt="error icon"                     class="info-icon">                   
+                  <p class="error">Please choose an option</p>
+                </div>
+                <div class="slide-content">
+                  <div class="quiz-option"> <span class="question-label">gift</span> <img                       src="https://media.thewhitecompany.com/i/white/1_GIFT" alt="gift" class="slider-image"> </div>
+                  <div class="quiz-option"> <span class="question-label">for yourself</span> <img                       src="https://media.thewhitecompany.com/i/white/1_FOR_YOURSELF" alt="for yourself"                       class="slider-image"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="main-section">
+    <div class="grid" style="--columns:12">
+      <div class="col">
+        <div id="progress-bar-container">
+          <div id="progress-bar" data-value="10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  var quizObject = {
+    question: "Is this a gift, or for yourself?",
+    options: [{
+      text: 'Gift',
+      imageUrl: 'https://media.thewhitecompany.com/i/white/1_GIFT',
+      options: {
+        question: 'How much do you want to spend?',
+        options: [{
+          text: 'Under £30',
+          imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+          additionalQuestion: true,
+        }, {
+          text: 'Over £30',
+          imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+          additionalQuestion: true,
+        }, {
+          text: 'No Preference',
+          imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+          additionalQuestion: true,
+        }],
+        additionalOptions: {
+          question: 'Do you want a scent for the home or bath & body?',
+          options: [{
+            text: 'Home',
+            imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_2_HOME',
+            options: {
+              question: 'Do you want a scent that is…',
+              options: [{
+                text: 'Soothing',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_3_HOME_soothing',
+                options: {
+                  question: 'Please choose your preferred fragrance type…',
+                  options: [{
+                    text: 'Floral',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_SOOTHING_floral',
+                    description: 'Explore our lovely light and floral fragrances, which mix sweet fruits and elegant flowery top notes with soft and natural bases.',
+                    endOfNode: true,
+                  }, {
+                    text: 'Herbal',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_SOOTHING_herbal',
+                    description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                    endOfNode: true,
+                  }, {
+                    text: 'Ozonic',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_SOOTHING_ozonic',
+                    description: 'Fresh and invigorating with sea-like notes, ozonic fragrances have a young and vibrant feel, combining fruity top notes with an enriching floral heart.',
+                    endOfNode: true,
+                  }]
+                }
+              }, {
+                text: 'Warming',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_3_HOME_warming',
+                options: {
+                  question: 'Please choose your preferred fragrance type…',
+                  options: [{
+                    text: 'Spicy',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_WARMING_spicy',
+                    description: 'Warming, sensual and vibrant, spicy scents use cinnamon, cloves and nutmeg with woody notes to create a sense of richness and depth.',
+                    endOfNode: true,
+                  }, {
+                    text: 'Gourmand',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_WARMING_gourmond',
+                    description: 'Usually featuring notes such as vanilla, almond, coffee and nutmeg, these fragrances are warm and comforting to create an almost edible quality.',
+                    endOfNode: true,
+                  }, {
+                    text: 'Woody',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_WARMING_woody',
+                    description: 'These warm, comforting scents use fragrant woods such as sandalwood, cedar, patchouli and vetivert to create their aromatic and opulent feel.',
+                    endOfNode: true,
+                  }]
+                }
+              }, {
+                text: 'Uplifting',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_3_HOME_uplifting',
+                options: {
+                  question: 'Please choose your preferred fragrance type…',
+                  options: [{
+                    text: 'Citrus',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_UPLIFTING_citrus',
+                    description: 'Refreshing, invigorating and energising, these fragrances are light and fresh, and feature citrus top notes of lemon, orange and bergamot.',
+                    endOfNode: true,
+                  }, {
+                    text: 'Fruity',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_UPLIFTING_fruity',
+                    description: 'These fragrances have a soft freshness, which creates a youthful and happy feel, with either fruity top notes or a central fruity heart.',
+                    endOfNode: true,
+                  }, {
+                    text: 'Herbal',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_UPLIFTING_herbal',
+                    description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                    endOfNode: true,
+                  }]
+                }
+              }, {
+                text: 'No Preference',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                options: {
+                  question: 'Discover our…',
+                  options: [{
+                    text: 'Bestsellers',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_NOPREF_bestsellers',
+                    options: {
+                      question: 'Please choose a bestselling scent…',
+                      options: [{
+                        text: 'Seychelles',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_HOME_NOPREF_BESTSELLERS_seychelles',
+                        endOfNode: true,
+                      }, {
+                        text: 'Winter',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_HOME_NOPREF_BESTSELLERS_winter',
+                        endOfNode: true,
+                      }, {
+                        text: 'Lime & Bay',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_HOME_NOPREF_BESTSELLERS_limeandbay',
+                        endOfNode: true,
+                      }]
+                    }
+                  }, {
+                    text: 'Gift Sets',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_NOPREF_giftsets',
+                    endOfNode: true,
+                  }, {
+                    text: 'Gift Cards',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_HOME_NOPREF_giftcards',
+                    endOfNode: true,
+                  }],
+                }
+              }]
+            }
+          }, {
+            text: 'Bath & Body',
+            imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_2_BODY',
+            options: {
+              question: 'Discover our…',
+              options: [{
+                text: 'Perfume',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_3_BODY_perfume',
+                options: {
+                  question: 'Do you want a scent for her or him?',
+                  options: [{
+                    text: 'For Her',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_PERFUME_her',
+                    endOfNode: true,
+                  }, {
+                    text: 'For Him',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_PERFUME_him',
+                    endOfNode: true,
+                  }]
+                }
+              }, {
+                text: 'Skincare',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_3_BODY_skincare',
+                endOfNode: true,
+              }, {
+                text: 'Bathing',
+                imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_3_BODY_bathing',
+                options: {
+                  question: 'Do you want a scent that is…',
+                  options: [{
+                    text: 'Soothing',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_BATHING_soothing',
+                    options: {
+                      question: 'Please choose your preferred fragrance type…',
+                      options: [{
+                        text: 'Floral',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_SOOTHING_floral',
+                        description: 'Explore our lovely light and floral fragrances, which mix sweet fruits and elegant flowery top notes with soft and natural bases.',
+                        endOfNode: true,
+                      }, {
+                        text: 'Herbal',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_SOOTHING_herbal',
+                        description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                        endOfNode: true,
+                      }, {
+                        text: 'Ozonic',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_SOOTHING_ozonic',
+                        description: 'Fresh and invigorating with sea-like notes, ozonic fragrances have a young and vibrant feel, combining fruity top notes with an enriching floral heart.',
+                        endOfNode: true,
+                      }]
+                    }
+                  }, {
+                    text: 'Warming',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_BATHING_warming',
+                    options: {
+                      question: 'Please choose your preferred fragrance type…',
+                      options: [{
+                        text: 'Spicy',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_WARMING_spicy',
+                        description: 'Warming, sensual and vibrant, spicy scents use cinnamon, cloves and nutmeg with woody notes to create a sense of richness and depth.',
+                        endOfNode: true,
+                      }, {
+                        text: 'Woody',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_WARMING_woody',
+                        description: 'These warm, comforting scents use fragrant woods such as sandalwood, cedar, patchouli and vetivert to create their aromatic and opulent feel.',
+                        endOfNode: true,
+                      }]
+                    }
+                  }, {
+                    text: 'Uplifting',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_BATHING_uplifiting',
+                    options: {
+                      question: 'Please choose your preferred fragrance type…',
+                      options: [{
+                        text: 'Citrus',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_UPLIFTING_citrus',
+                        description: 'Refreshing, invigorating and energising, these fragrances are light and fresh, and feature citrus top notes of lemon, orange and bergamot.',
+                        endOfNode: true,
+                      }, {
+                        text: 'Fruity',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_UPLIFTING_fruity',
+                        description: 'These fragrances have a soft freshness, which creates a youthful and happy feel, with either fruity top notes or a central fruity heart.',
+                        endOfNode: true,
+                      }, {
+                        text: 'Herbal',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_UPLIFTING_herbal',
+                        description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                        endOfNode: true,
+                      }]
+                    }
+                  }, {
+                    text: 'No Preference',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                    options: {
+                      question: 'Discover our…',
+                      options: [{
+                        text: 'Bestsellers',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_NOPREF_bestsellers',
+                        options: {
+                          question: 'Please choose a bestselling scent…',
+                          options: [{
+                            text: 'Seychelles',
+                            imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_6_BODY_BATHING_NOPREF_BESTSELLERS_seychelles',
+                            endOfNode: true,
+                          }, {
+                            text: 'Spa',
+                            imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_6_BODY_BATH_NOPREF_BESTSELLERS_spa',
+                            endOfNode: true,
+                          }, {
+                            text: 'Lime & Bay',
+                            imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_6_BODY_BATHING_NOPREF_BESTSELLERS_limeandbay',
+                            endOfNode: true,
+                          }]
+                        }
+                      }, {
+                        text: 'Gift Sets',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_NOPREF_giftsets',
+                        endOfNode: true,
+                      }, {
+                        text: 'Gift Cards',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_NOPREF_giftcard',
+                        endOfNode: true,
+                      }]
+                    }
+                  }]
+                }
+              }]
+            }
+          }]
+        }
+      }
+    }, {
+      text: 'For Yourself',
+      imageUrl: 'https://media.thewhitecompany.com/i/white/1_FOR_YOURSELF',
+      options: {
+        question: 'Do you want a scent for the home or bath & body?',
+        options: [{
+          text: 'Home',
+          imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_1_home',
+          options: {
+            question: 'Do you want a scent that is…',
+            options: [{
+              text: 'Warming',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_2_HOME_warming',
+              options: {
+                question: 'Please choose your preferred fragrance type…',
+                options: [{
+                  text: 'Spicy',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_WARMING_spicy',
+                  description: 'Warming, sensual and vibrant, spicy scents use cinnamon, cloves and nutmeg with woody notes to create a sense of richness and depth.',
+                  additionalQuestion: true,
+                }, {
+                  text: 'Gourmand',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_WARMING_gourmond',
+                  description: 'Usually featuring notes such as vanilla, almond, coffee and nutmeg, these fragrances are warm and comforting to create an almost edible quality.',
+                  additionalQuestion: true,
+                }, {
+                  text: 'Woody',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_WARMING_woody',
+                  description: 'These warm, comforting scents use fragrant woods such as sandalwood, cedar, patchouli and vetivert to create their aromatic and opulent feel.',
+                  additionalQuestion: true,
+                }],
+                additionalOptions: {
+                  question: 'How much do you want to spend?',
+                  options: [{
+                    text: 'Under £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'Over £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'No Preference',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                    endOfNode: true,
+                  }],
+                }
+              }
+            }, {
+              text: 'Soothing',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_2_HOME_soothing',
+              options: {
+                question: 'Please choose your preferred fragrance type…',
+                options: [{
+                  text: 'Floral',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_SOOTHING_floral',
+                  description: 'Explore our lovely light and floral fragrances, which mix sweet fruits and elegant flowery top notes with soft and natural bases.',
+                  additionalQuestion: true,
+                }, {
+                  text: 'Herbal',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_SOOTHING_herbal',
+                  description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                  additionalQuestion: true,
+                }, {
+                  text: 'Ozonic',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_SOOTHING_ozanic',
+                  description: 'Fresh and invigorating with sea-like notes, ozonic fragrances have a young and vibrant feel, combining fruity top notes with an enriching floral heart.',
+                  additionalQuestion: true,
+                }],
+                additionalOptions: {
+                  question: 'How much do you want to spend?',
+                  options: [{
+                    text: 'Under £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'Over £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'No Preference',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                    endOfNode: true,
+                  }],
+                }
+              }
+            }, {
+              text: 'Uplifting',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_2_HOME_uplifting',
+              options: {
+                question: 'Please choose your preferred fragrance type…',
+                options: [{
+                  text: 'Citrus',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_UPLIFTING_citrus',
+                  description: 'Refreshing, invigorating and energising, these fragrances are light and fresh, and feature citrus top notes of lemon, orange and bergamot.',
+                  additionalQuestion: true,
+                }, {
+                  text: 'Fruity',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_UPLIFTING_fruity',
+                  description: 'These fragrances have a soft freshness, which creates a youthful and happy feel, with either fruity top notes or a central fruity heart.',
+                  additionalQuestion: true,
+                }, {
+                  text: 'Herbal',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_UPLIFTING_herbal',
+                  description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                  additionalQuestion: true,
+                }],
+                additionalOptions: {
+                  question: 'How much do you want to spend?',
+                  options: [{
+                    text: 'Under £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'Over £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'No Preference',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                    endOfNode: true,
+                  }],
+                }
+              }
+            }, {
+              text: 'No Preference',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+              options: {
+                question: 'Discover our…',
+                options: [{
+                  text: 'Bestsellers',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_NOPREF_bestsellers',
+                  additionalQuestion: false,
+                  options: {
+                    question: 'Please choose a bestselling scent…',
+                    options: [{
+                      text: 'Seychelles',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_HOME_NOPREF_BESTSELLERS_seychelles',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Winter',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_HOME_NOPREF_BESTSELLERS_winter',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Lime & Bay',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_HOME_NOPREF_BESTSELLERS_limeandbay',
+                      additionalQuestion: true,
+                    }],
+                    additionalOptions: {
+                      question: 'How much do you want to spend?',
+                      options: [{
+                        text: 'Under £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'Over £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'No Preference',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                        endOfNode: true,
+                      }],
+                    }
+                  }
+                }, {
+                  text: 'Gift Sets',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_HOME_NOPREF_giftsets',
+                  additionalQuestion: true,
+                }],
+                additionalOptions: {
+                  question: 'How much do you want to spend?',
+                  options: [{
+                    text: 'Under £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'Over £30',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                    endOfNode: true,
+                  }, {
+                    text: 'No Preference',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                    endOfNode: true,
+                  }]
+                }
+              }
+            }]
+          }
+        }, {
+          text: 'Bath & Body',
+          imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_1_body',
+          options: {
+            question: 'Discover our…',
+            options: [{
+              text: 'Perfume',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_2_BODY_perfume',
+              options: {
+                question: 'Do you want a scent for her or him?',
+                options: [{
+                  text: 'For Her',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_PERFUME_her',
+                  endOfNode: true,
+                }, {
+                  text: 'For Him',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_PERFUME_him',
+                  endOfNode: true,
+                },{
+                    text: 'No Preference',
+                    imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                    endOfNode: true,
+                }]
+              }
+            }, {
+              text: 'Skincare',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_2_BODY_skincare',
+              options: {
+                question: 'How much do you want to spend?',
+                options: [{
+                  text: 'Under £30',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                  endOfNode: true,
+                }, {
+                  text: 'Over £30',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                  endOfNode: true,
+                }, {
+                  text: 'No Preference',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                  endOfNode: true,
+                }]
+              }
+            }, {
+              text: 'Bathing',
+              imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_2_BODY_bath',
+              options: {
+                question: 'Do you want a scent that is…',
+                options: [{
+                  text: 'Soothing',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_BODY_BATHING_soothing',
+                  options: {
+                    question: 'Please choose your preferred fragrance type…',
+                    options: [{
+                      text: 'Floral',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_SOOTHING_floral',
+                      description: 'Explore our lovely light and floral fragrances, which mix sweet fruits and elegant flowery top notes with soft and natural bases.',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Herbal',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_SOOTHING_herbal',
+                      description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Ozonic',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_SOOTHING_ozonic',
+                      description: 'Fresh and invigorating with sea-like notes, ozonic fragrances have a young and vibrant feel, combining fruity top notes with an enriching floral heart.',
+                      additionalQuestion: true,
+                    }],
+                    additionalOptions: {
+                      question: 'How much do you want to spend?',
+                      options: [{
+                        text: 'Under £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'Over £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'No Preference',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                        endOfNode: true,
+                      }]
+                    }
+                  }
+                }, {
+                  text: 'Warming',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_4_BODY_BATHING_warming',
+                  options: {
+                    question: 'Please choose your preferred fragrance type…',
+                    options: [{
+                      text: 'Spicy',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_WARMING_spicy',
+                      description: 'Warming, sensual and vibrant, spicy scents use cinnamon, cloves and nutmeg with woody notes to create a sense of richness and depth.',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Woody',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_WARMING_woody',
+                      description: 'These warm, comforting scents use fragrant woods such as sandalwood, cedar, patchouli and vetivert to create their aromatic and opulent feel.',
+                      additionalQuestion: true,
+                    }],
+                    additionalOptions: {
+                      question: 'How much do you want to spend?',
+                      options: [{
+                        text: 'Under £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'Over £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'No Preference',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                        endOfNode: true,
+                      }]
+                    }
+                  }
+                }, {
+                  text: 'Uplifting',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_3_BODY_BATHING_uplifting',
+                  options: {
+                    question: 'Please choose your preferred fragrance type…',
+                    options: [{
+                      text: 'Citrus',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_uplifting_citrus',
+                      description: 'Refreshing, invigorating and energising, these fragrances are light and fresh, and feature citrus top notes of lemon, orange and bergamot.',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Fruity',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_uplifting_fruity',
+                      description: 'These fragrances have a soft freshness, which creates a youthful and happy feel, with either fruity top notes or a central fruity heart.',
+                      additionalQuestion: true,
+                    }, {
+                      text: 'Herbal',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_4_BODY_BATH_uplifting_herbal',
+                      description: 'Refreshing, relaxing and invigorating, herbal fragrances, whether inspired by a single herb or a combination, are characterised by intense green scents.',
+                      additionalQuestion: true,
+                    }],
+                    additionalOptions: {
+                      question: 'How much do you want to spend?',
+                      options: [{
+                        text: 'Under £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'Over £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'No Preference',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                        endOfNode: true,
+                      }]
+                    }
+                  }
+                }, {
+                  text: 'No Preference',
+                  imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                  options: {
+                    question: 'Discover our…',
+                    options: [{
+                      text: 'Bestsellers',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_NOPREF_bestsellers',
+                      additionalQuestion: false,
+                      options: {
+                        question: 'Please choose a bestselling scent…',
+                        options: [{
+                          text: 'Seychelles',
+                          imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_5_BODY_BATH_NOPREF_BESTSELLERS_seychelles',
+                          endOfNode: true,
+                        }, {
+                          text: 'Spa',
+                          imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_5_BODY_BATH_NOPREF_BESTSELLERS_spa',
+                          endOfNode: true,
+                        }, {
+                          text: 'Lime & Bay',
+                          imageUrl: 'https://media.thewhitecompany.com/i/white/FORYOU_5_BODY_BATH_NOPREF_BESTSELLERS_limeandbay',
+                          endOfNode: true,
+                        }],
+                      }
+                    }, {
+                      text: 'Gift Sets',
+                      imageUrl: 'https://media.thewhitecompany.com/i/white/GIFT_5_BODY_BATHING_NOPREF_giftsets',
+                      additionalQuestion: true,
+                    }],
+                    additionalOptions: {
+                      question: 'How much do you want to spend?',
+                      options: [{
+                        text: 'Under £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Under_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'Over £30',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Over_30',
+                        endOfNode: true,
+                      }, {
+                        text: 'No Preference',
+                        imageUrl: 'https://media.thewhitecompany.com/i/white/Scent-Finder_nopreference',
+                        endOfNode: true,
+                      }]
+                    }
+                  }
+                }]
+              }
+            }]
+          }
+        }]
+      }
+    }]
+  }; 
+</script>
