@@ -663,5 +663,5 @@ window.addEventListener("scroll", () => {
 });
 
 window.addEventListener("resize", function(){
-  window.alert("Window Resized");
+  alert("Window Resized");
 });
