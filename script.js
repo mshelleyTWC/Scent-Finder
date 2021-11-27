@@ -661,3 +661,7 @@ window.addEventListener("scroll", () => {
     nextArrow.style.transition = "0.2s ease 0.01s";
   }
 });
+
+window.addEventListener("resize", function(){
+  alert("Window Resized");
+});
