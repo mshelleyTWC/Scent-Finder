@@ -87,11 +87,11 @@
     }
     
     @media only screen and (max-width: 767px) {
+      body{
+        margin: 0;
+      }
       #mb-marg {
         margin-bottom: 20px;
-      }
-      .tww-sale-ctn {
-        margin-top: 10px;
       }
       #cc-d {
         display: none;
@@ -536,7 +536,7 @@
       height: 100%;
     }
     .prev {
-      position: fixed;
+      position: absolute;
       top: 80%;
       bottom: 20%;
       left: 0px;
@@ -544,7 +544,7 @@
       transform: translate(0, -50%);
     }
     .next {
-      position: fixed;
+      position: absolute;
       top: 80%;
       bottom: 20%;
       right: -18px;
@@ -678,8 +678,6 @@
       <div class="col col--xs-6 col--sm-4 col--md-3">
         <div id="slider" class="slider">
           <div class="slider-wrapper">
-            <div class="last"><button class="prev" id="prev" disabled><span>Back</span><img src="https://media.thewhitecompany.com/i/white/arrow-left" alt="previous question" class="move-left"></button></div>
-            <div class="forward"><button class="next next-disabled" id="next"><span>Next</span> <img src=" https://media.thewhitecompany.com/i/white/arrow-right" alt="next question" class="move-right"></button></div>
             <div class="slider-container slides" id="slides">
               <div class="slide" id="slide-1">
                 <h3 class="question">Is this a gift, or for yourself?</h3>
@@ -1373,6 +1371,20 @@
 </script>
 <script>
   console.log("martin testing");
+  var prevDiv = document.createElement("div");
+  prevDiv.classList.add("last");
+  prevDiv.innerHTML = '<button class="prev" id="prev" disabled><span>Back</span><img src="https://media.thewhitecompany.com/i/white/arrow-left" alt="previous question" class="move-left"></button>';
+  var nextDiv = document.createElement("div");
+  nextDiv.classList.add("forward");
+  nextDiv.innerHTML = '<button class="next next-disabled" id="next"><span>Next</span> <img src=" https://media.thewhitecompany.com/i/white/arrow-right" alt="next question" class="move-right"></button>'
+  if(window.innerWidth < 480){
+    document.querySelector("html").insertBefore(prevDiv, document.querySelector("head"));
+    document.querySelector("html").insertBefore(nextDiv, document.querySelector("head"));
+  }
+  else if(window.innerWidth > 480){
+    document.querySelector(".slider-wrapper").insertBefore(prevDiv, document.querySelector("#slides"));
+    document.querySelector(".slider-wrapper").insertBefore(nextDiv, document.querySelector("#slides"));
+  }
 var urlList = {
   options: [{
     keywords: ['For Her'],
@@ -2018,17 +2030,32 @@ function enableNextButton() {
 }
 
 window.addEventListener("scroll", () => {
-  var bottomOfNav = document.querySelector('#cc-ctn').getBoundingClientRect().bottom;
+  var blackFridayBanner = document.querySelector('#cc-ctn').getBoundingClientRect().bottom;
+  var scentFinderBanner = document.querySelector('body > div.main > section:nth-child(1)').getBoundingClientRect().bottom;
+
+  if(blackFridayBanner > scentFinderBanner){
+    document.querySelector(".last").style.position = "sticky";
+    document.querySelector(".last").style.top = "50%";
+    document.querySelector(".forward").style.position = "sticky";
+    document.querySelector(".forward").style.top = "50%";
+  }
+  else if(blackFridayBanner < scentFinderBanner){
+    document.querySelector(".last").style.position = "unset";
+    document.querySelector(".last").style.top = "unset";
+    document.querySelector(".forward").style.position = "unset";
+    document.querySelector(".forward").style.top = "unset";
+  }
+
   var hidingPoint = document.querySelector(".slider-wrapper").getBoundingClientRect().height * 0.25;
   var bottomOfQuiz = document.querySelector(".slider-wrapper").getBoundingClientRect().bottom;
   var hidingPointForButtons = bottomOfQuiz - hidingPoint;
 
-  if (bottomOfNav > hidingPointForButtons) {
+  if (blackFridayBanner > hidingPointForButtons) {
     prevArrow.style.opacity = 0;
     prevArrow.style.transition = "0.2s ease 0.01s";
     nextArrow.style.opacity = 0;
     nextArrow.style.transition = "0.2s ease 0.01s";
-  } else if (bottomOfNav < hidingPointForButtons) {
+  } else if (blackFridayBanner < hidingPointForButtons) {
     prevArrow.style.opacity = 1;
     prevArrow.style.transition = "0.2s ease 0.01s";
     nextArrow.style.opacity = 1;
@@ -2038,3 +2065,6 @@ window.addEventListener("scroll", () => {
 </script>
 </body>
 </html>
+
+<!-- <div class="last"><button class="prev" id="prev" disabled><span>Back</span><img src="https://media.thewhitecompany.com/i/white/arrow-left" alt="previous question" class="move-left"></button></div>
+<div class="forward"><button class="next next-disabled" id="next"><span>Next</span> <img src=" https://media.thewhitecompany.com/i/white/arrow-right" alt="next question" class="move-right"></button></div> -->
